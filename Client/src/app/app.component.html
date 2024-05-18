@@ -1,0 +1,26 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+  <h2>Hotel List</h2>
+  <button (click)="ngOnButtonPress()">Get Hotels Near Me</button>
+  <div *ngFor="let hotel of hotels">
+    <h3>{{ hotel.name }}</h3>
+    <p>Latitude: {{ hotel.latitude }}</p>
+    <p>Longitude: {{ hotel.longitude }}</p>
+
+    <div *ngIf="hotel.rooms && hotel.rooms.length > 0">
+      <p>Rooms:</p>
+      <ul>
+        <li *ngFor="let room of hotel.rooms">
+          <p>Room Number: {{ room.roomNumber }}</p>
+          <p>Price: {{ room.price | currency }}</p>
+          <p>Available: {{ room.isAvailable ? 'Yes' : 'No' }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </body>
+</html>
+<router-outlet />
